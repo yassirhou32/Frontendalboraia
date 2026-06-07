@@ -8,7 +8,7 @@ import { ArrowRight, Lock, LogIn, Mail, Shield, UserPlus } from 'lucide-react';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import {
   GlobalStyles, AuthBackground, ChromeCard, PremiumButton,
-  AuthHero, authCardClass, authInputClass, authLabelClass, authLinkCardClass,
+  AuthHero, AuthBackHome, AuthFormLayout, authCardClass, authInputClass, authLabelClass, authLinkCardClass,
 } from '@/components/admin/y2k';
 import { api } from '@/lib/api';
 import { setClientAuth } from '@/lib/auth';
@@ -46,8 +46,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="w-full max-w-xl lg:max-w-2xl mx-auto">
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="w-full">
         <ChromeCard className={authCardClass} title="Iniciar sesión" subtitle="Introduce tus credenciales para continuar" hideMenu>
           {justRegistered && (
             <div className="mb-6 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-base backdrop-blur-sm">
@@ -97,16 +96,12 @@ function LoginForm() {
           <ArrowRight className="w-6 h-6 text-neutral-200 group-hover:translate-x-1 transition-transform drop-shadow-md" />
         </Link>
 
-        <div className="flex justify-center mt-8 gap-6">
-          <Link href="/" className="text-sm text-neutral-200 hover:text-white font-medium drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-            Volver al inicio
-          </Link>
+        <div className="flex justify-center mt-8">
           <Link href="/admin/login" className="flex items-center gap-2 text-sm text-neutral-200 hover:text-white font-medium drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
             <Shield className="w-4 h-4" /> Acceso administrador
           </Link>
         </div>
-      </motion.div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -115,6 +110,7 @@ export default function AccesoPage() {
     <div className="admin-y2k auth-page relative min-h-screen flex flex-col p-6 sm:p-10 lg:p-14 overflow-x-hidden">
       <GlobalStyles />
       <AuthBackground />
+      <AuthBackHome className="absolute top-4 left-4 sm:top-6 sm:left-6 lg:top-8 lg:left-8 z-30" />
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col flex-1">
         <AuthHero
           title="Bienvenido"
@@ -123,11 +119,11 @@ export default function AccesoPage() {
           centerTitle
           className="mb-8 lg:mb-12 shrink-0"
         />
-        <div className="flex-1 flex items-start sm:items-center justify-center pb-8">
+        <AuthFormLayout>
           <Suspense fallback={<LoadingSpinner size="lg" />}>
             <LoginForm />
           </Suspense>
-        </div>
+        </AuthFormLayout>
       </div>
     </div>
   );

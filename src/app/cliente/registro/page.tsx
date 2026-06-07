@@ -8,7 +8,7 @@ import { ArrowLeft, ArrowRight, Lock, Mail, User, UserPlus } from 'lucide-react'
 import LoadingSpinner from '@/components/LoadingSpinner';
 import {
   GlobalStyles, AuthBackground, ChromeCard, PremiumButton,
-  authLabelClass, AuthHero, authCardClass, authInputClass,
+  authLabelClass, AuthHero, AuthBackHome, AuthFormLayout, authCardClass, authInputClass,
 } from '@/components/admin/y2k';
 import { cn } from '@/lib/utils';
 import { api } from '@/lib/api';
@@ -39,6 +39,7 @@ export default function ClientRegisterPage() {
     <div className="admin-y2k auth-page relative min-h-screen flex flex-col p-6 sm:p-10 lg:p-14 overflow-x-hidden">
       <GlobalStyles />
       <AuthBackground />
+      <AuthBackHome className="absolute top-4 left-4 sm:top-6 sm:left-6 lg:top-8 lg:left-8 z-30" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col flex-1">
         <AuthHero
@@ -49,11 +50,11 @@ export default function ClientRegisterPage() {
           className="mb-8 lg:mb-12 shrink-0"
         />
 
-        <div className="flex-1 flex items-start sm:items-center justify-center pb-8">
+        <AuthFormLayout>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="w-full max-w-xl lg:max-w-2xl mx-auto"
+            className="w-full"
           >
             <ChromeCard
               className={authCardClass}
@@ -109,7 +110,7 @@ export default function ClientRegisterPage() {
               Volver a iniciar sesión
             </Link>
           </motion.div>
-        </div>
+        </AuthFormLayout>
       </div>
     </div>
   );

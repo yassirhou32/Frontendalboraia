@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useMotionTemplate, useMotionValue, LayoutGroup } from 'framer-motion';
-import { Car } from 'lucide-react';
+import { ArrowLeft, Car } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 function PremiumCarSvg({ className, uid, animateWheels = false }: { className?: string; uid: string; animateWheels?: boolean }) {
@@ -820,6 +820,34 @@ export function AuthHero({
         </div>
       </div>
       <h1 className={cn('display-title', centerTitle && 'text-center')}>{title}</h1>
+    </div>
+  );
+}
+
+export function AuthBackHome({ className }: { className?: string }) {
+  return (
+    <Link
+      href="/"
+      className={cn(
+        'group inline-flex items-center gap-3 rounded-full border px-5 py-3 shrink-0',
+        'border-white/20 bg-white/[0.06] backdrop-blur-md',
+        'text-sm font-semibold text-neutral-200 hover:text-white hover:bg-white/10 hover:border-white/30',
+        'transition-all duration-300',
+        className,
+      )}
+    >
+      <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+      Volver a la página de inicio
+    </Link>
+  );
+}
+
+export function AuthFormLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex-1 flex items-start sm:items-center justify-center pb-8 w-full">
+      <div className="w-full max-w-xl lg:max-w-2xl mx-auto">
+        {children}
+      </div>
     </div>
   );
 }
