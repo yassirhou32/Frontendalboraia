@@ -829,7 +829,7 @@ export function AuthBackHome({ className }: { className?: string }) {
     <Link
       href="/"
       className={cn(
-        'group inline-flex items-center gap-3 rounded-full border px-5 py-3 shrink-0',
+        'group inline-flex items-center gap-3 rounded-full border px-6 py-3.5 shrink-0',
         'border-white/20 bg-white/[0.06] backdrop-blur-md',
         'text-sm font-semibold text-neutral-200 hover:text-white hover:bg-white/10 hover:border-white/30',
         'transition-all duration-300',
